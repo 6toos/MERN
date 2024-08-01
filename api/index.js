@@ -1,9 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
-mongoose.connect(
-  "mongodb+srv://6toos:Myworld2..@mern-estate.cm1cwbq.mongodb.net/?retryWrites=true&w=majority&appName=Mern-estate"
-);
+mongoose.connect(process.env.MONGO).then(() => {
+    console.log("connected...")
+}).catch((err) => {
+    console.log(err);
+})
 
 const app = express();
 
